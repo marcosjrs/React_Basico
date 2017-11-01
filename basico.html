@@ -15,17 +15,30 @@
     <script type="text/babel">
 
     class Principal extends React.Component{
+      constructor(){
+        super();
+        this.state = {
+          numero:10
+        };
+      }
+
+      incrementarUno(){
+        this.setState({numero: ++this.state.numero});
+      }
+
       render(){
         return ( 
           <div>
             <h2>Componente Principal</h2>
             <IntroducirTexto></IntroducirTexto> 
+            <div>{this.state.numero}</div>
+            <Incrementador numero={this.state.numero} aumentar={this.incrementarUno.bind(this)}></Incrementador>
           </div>
           );
       };
     }
 
-    class IntroducirTexto extends React.Component{
+    class IntroducirTexto extends React.Component{ 
       constructor(){
         super();
         this.state = {
@@ -45,6 +58,24 @@
           </div>
         );
       };
+    }
+
+    class Incrementador extends React.Component{
+      constructor(){
+        super();
+      }
+      ejecutar(){
+        //la propiedad numero en realidad es un estado del componente padre (aunque se lo pase como propiedad )
+        //por tanto es su legitimo propietario quien debe modificarlo, por eso disponemos tambien de la función....
+        this.props.aumentar(); 
+      }
+      render(){
+        return (
+          <div>
+            <button onClick={this.ejecutar.bind(this)}>Incrementar número:  {this.props.numero} </button>  
+          </div>
+        );
+      }
     }
 
     //Renderizar todo
