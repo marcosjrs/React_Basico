@@ -26,13 +26,20 @@
         this.setState({numero: ++this.state.numero});
       }
 
+      decrementarUno(){
+        this.setState({numero: --this.state.numero});
+      }
+
       render(){
         return ( 
           <div>
             <h2>Componente Principal</h2>
+            <hr />
             <IntroducirTexto></IntroducirTexto> 
-            <div>{this.state.numero}</div>
-            <Incrementador numero={this.state.numero} aumentar={this.incrementarUno.bind(this)}></Incrementador>
+            <hr />
+            <span>{this.state.numero} </span>
+            <Incrementador aumentar={this.incrementarUno.bind(this)}></Incrementador>
+            <Decrementador decrementar={this.decrementarUno.bind(this)}></Decrementador>
           </div>
           );
       };
@@ -65,18 +72,29 @@
         super();
       }
       ejecutar(){
-        //la propiedad numero en realidad es un estado del componente padre (aunque se lo pase como propiedad )
-        //por tanto es su legitimo propietario quien debe modificarlo, por eso disponemos tambien de la función....
         this.props.aumentar(); 
       }
       render(){
         return (
-          <div>
-            <button onClick={this.ejecutar.bind(this)}>Incrementar número:  {this.props.numero} </button>  
-          </div>
+            <button onClick={this.ejecutar.bind(this)}>+</button>  
         );
       }
     }
+
+    class Decrementador extends React.Component{
+      constructor(){
+        super();
+      }
+      ejecutar(){
+        this.props.decrementar(); 
+      }
+      render(){
+        return (
+            <button onClick={this.ejecutar.bind(this)}>-</button>  
+        );
+      }
+    }
+
 
     //Renderizar todo
     ReactDOM.render(
