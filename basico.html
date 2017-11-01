@@ -26,10 +26,17 @@
     }
 
     class SubComponente extends React.Component{
+      constructor(){
+        super();
+        this.state = {
+          nombre: "SubComponente 1"
+        }
+      }
+
       render(){
         return ( 
           <div>
-            <h3>SubComponente</h3> 
+            <h3>{this.state.nombre}</h3> 
             <div>Texto de SubComponente</div>
           </div>
         );
