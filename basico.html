@@ -37,7 +37,7 @@
             <hr />
             <IntroducirTexto></IntroducirTexto> 
             <hr />
-            <span>{this.state.numero} </span>
+            <DisplayNumero numero={this.state.numero}> </DisplayNumero>
             <Incrementador aumentar={this.incrementarUno.bind(this)}></Incrementador>
             <Decrementador decrementar={this.decrementarUno.bind(this)}></Decrementador>
           </div>
@@ -67,10 +67,15 @@
       };
     }
 
-    class Incrementador extends React.Component{
-      constructor(){
-        super();
+    class DisplayNumero extends React.Component{
+      render(){
+        return (
+            <span>{ this.props.numero} </span>
+        );
       }
+    }
+
+    class Incrementador extends React.Component{
       ejecutar(){
         this.props.aumentar(); 
       }
@@ -82,9 +87,6 @@
     }
 
     class Decrementador extends React.Component{
-      constructor(){
-        super();
-      }
       ejecutar(){
         this.props.decrementar(); 
       }
