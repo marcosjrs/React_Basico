@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Hello World</title>
+    <script src="https://unpkg.com/react@16/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/babel-standalone@6.15.0/babel.min.js"></script>
+  </head>
+  <body>
+    <!-- Base descargada de https://reactjs.org/docs/installation.html -->
+    <h1>Proyecto react</h1>
+    <div id="content"></div>
+
+    <script type="text/babel">
+
+    class Principal extends React.Component{
+      render(){
+        return ( 
+          <div>
+            <h2>Componente Principal</h2>
+            <SubComponente></SubComponente> 
+          </div>
+          );
+      };
+    }
+
+    class SubComponente extends React.Component{
+      render(){
+        return ( 
+          <div>
+            <h3>SubComponente</h3> 
+            <div>Texto de SubComponente</div>
+          </div>
+        );
+      };
+    }
+
+    //Renderizar todo
+    ReactDOM.render(
+      <Principal></Principal>,
+      document.getElementById("content")
+    );
+
+    </script>
+ 
+  </body>
+</html>
