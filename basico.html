@@ -9,7 +9,7 @@
   </head>
   <body>
     <!-- Base descargada de https://reactjs.org/docs/installation.html -->
-    <h1>Proyecto react</h1>
+    <h1>Proyecto ReactJS</h1>
     <div id="content"></div>
 
     <script type="text/babel">
@@ -19,25 +19,29 @@
         return ( 
           <div>
             <h2>Componente Principal</h2>
-            <SubComponente></SubComponente> 
+            <IntroducirTexto></IntroducirTexto> 
           </div>
           );
       };
     }
 
-    class SubComponente extends React.Component{
+    class IntroducirTexto extends React.Component{
       constructor(){
         super();
         this.state = {
-          nombre: "SubComponente 1"
+          nombre: "Introduce un texto"
         }
       }
+
+      cambiarNombre(evento){
+        this.setState( {"nombre":evento.target.value} ); //modificamos el estado nombre, de tal forma que produce un renderizado.
+      };
 
       render(){
         return ( 
           <div>
             <h3>{this.state.nombre}</h3> 
-            <div>Texto de SubComponente</div>
+            <input onChange={this.cambiarNombre.bind(this)} />
           </div>
         );
       };
